@@ -33,7 +33,7 @@ export default function Header() {
             underline="none"
             to="/"
           >
-            My Store!
+            My Store for task #2.1! Deploy manually
           </Link>
         </Typography>
 
