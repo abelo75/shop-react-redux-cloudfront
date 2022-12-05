@@ -14,21 +14,23 @@ test("Renders products list", async () => {
   const products: AvailableProduct[] = [
     {
       id: "1",
-      title: "Product 1",
       description: "Product 1 description",
       price: 1,
-      count: 1,
+      priority: 1,
+      placeId: "0001",
+      count: 999,
     },
     {
       id: "2",
-      title: "Product 2",
       description: "Product 2 description",
       price: 2,
-      count: 2,
+      priority: 2,
+      placeId: "0002",
+      count: 999,
     },
   ];
   server.use(
-    rest.get(`${API_PATHS.bff}/product/available`, (req, res, ctx) => {
+    rest.get(`${API_PATHS.bff}/products`, (req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.delay(),
@@ -47,7 +49,7 @@ test("Renders products list", async () => {
 
   await waitForElementToBeRemoved(() => screen.queryByText(/Loading/));
   products.forEach((product) => {
-    expect(screen.getByText(product.title)).toBeInTheDocument();
+    expect(screen.getByText(product.description)).toBeInTheDocument();
     expect(screen.getByText(formatAsPrice(product.price))).toBeInTheDocument();
   });
 });

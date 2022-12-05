@@ -33,7 +33,7 @@ export default function Header() {
             underline="none"
             to="/"
           >
-            My Store for task #2.1! Deploy manually
+            Charge your truck
           </Link>
         </Typography>
 

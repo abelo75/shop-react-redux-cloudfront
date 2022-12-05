@@ -58,16 +58,6 @@ export default function PageProductForm() {
                 <Grid item xs={12}>
                   <Field
                     component={TextField}
-                    name="title"
-                    label="Title"
-                    fullWidth
-                    autoComplete="off"
-                    required
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    component={TextField}
                     name="description"
                     label="Description"
                     fullWidth
@@ -89,8 +79,28 @@ export default function PageProductForm() {
                 <Grid item xs={12} sm={4}>
                   <Field
                     component={TextField}
-                    name="count"
-                    label="Count"
+                    name="power"
+                    label="Power"
+                    fullWidth
+                    autoComplete="off"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Field
+                    component={TextField}
+                    name="placeId"
+                    label="Place Id"
+                    fullWidth
+                    autoComplete="off"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sm={4}>
+                  <Field
+                    component={TextField}
+                    name="priority"
+                    label="Priority"
                     fullWidth
                     autoComplete="off"
                     required

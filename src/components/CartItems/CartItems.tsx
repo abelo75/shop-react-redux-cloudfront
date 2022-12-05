@@ -5,6 +5,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { CartItem } from "~/models/CartItem";
 import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
+import { locations } from "~/components/pages/PageProducts/components/Products";
 
 type CartItemsProps = {
   items: CartItem[];
@@ -27,7 +28,7 @@ export default function CartItems({ items, isEditable }: CartItemsProps) {
           >
             {isEditable && <AddProductToCart product={cartItem.product} />}
             <ListItemText
-              primary={cartItem.product.title}
+              primary={locations[cartItem.product.placeId]}
               secondary={cartItem.product.description}
             />
             <Typography variant="body2">

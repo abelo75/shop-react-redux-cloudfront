@@ -8,6 +8,11 @@ import { formatAsPrice } from "~/utils/utils";
 import AddProductToCart from "~/components/AddProductToCart/AddProductToCart";
 import { useAvailableProducts } from "~/queries/products";
 
+export const locations: { [key: string]: string } = {
+  "0001": "New york",
+  "0002": "Washington",
+};
+
 export default function Products() {
   const { data = [], isLoading } = useAvailableProducts();
 
@@ -25,14 +30,15 @@ export default function Products() {
           >
             <CardMedia
               sx={{ pt: "56.25%" }}
-              image={`https://source.unsplash.com/random?sig=${index}`}
+              image={`https://source.unsplash.com/random?sig=${index}&collections=trucks`}
               title="Image title"
             />
             <CardContent sx={{ flexGrow: 1 }}>
               <Typography gutterBottom variant="h5" component="h2">
-                {product.title}
+                {product.description}
               </Typography>
               <Typography>{formatAsPrice(product.price)}</Typography>
+              <Typography>Location: {locations[product.placeId]}</Typography>
             </CardContent>
             <CardActions>
               <AddProductToCart product={product} />
