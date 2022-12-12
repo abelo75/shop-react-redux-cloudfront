@@ -15,6 +15,7 @@ test("Renders products list", async () => {
     {
       id: "1",
       description: "Product 1 description",
+      title: "Product 1 description",
       price: 1,
       priority: 1,
       placeId: "0001",
@@ -23,6 +24,7 @@ test("Renders products list", async () => {
     {
       id: "2",
       description: "Product 2 description",
+      title: "Product 2 description",
       price: 2,
       priority: 2,
       placeId: "0002",
