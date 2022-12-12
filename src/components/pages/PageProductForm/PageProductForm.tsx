@@ -66,6 +66,17 @@ export default function PageProductForm() {
                     required
                   />
                 </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    component={TextField}
+                    name="title"
+                    label="Title"
+                    fullWidth
+                    autoComplete="off"
+                    multiline
+                    required
+                  />
+                </Grid>
                 <Grid item xs={12} sm={4}>
                   <Field
                     component={TextField}

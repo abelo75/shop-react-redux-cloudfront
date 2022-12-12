@@ -2,11 +2,12 @@ import * as Yup from "yup";
 
 export const ProductSchema = Yup.object({
   id: Yup.string(),
-  // title: Yup.string().required().default(""),
+  title: Yup.string().required().default(""),
   description: Yup.string().default(""),
   price: Yup.number().positive().required().defined().default(0),
   priority: Yup.number().default(0),
   placeId: Yup.string().default(""),
+  count: Yup.number().default(0),
 });
 
 export const AvailableProductSchema = ProductSchema.shape({
