@@ -14,6 +14,7 @@ import {
   useInvalidateAvailableProducts,
 } from "~/queries/products";
 
+const priority = ["Std", "High", "Lux"];
 export default function ProductsTable() {
   const { data = [] } = useAvailableProducts();
   const { mutate: deleteAvailableProduct } = useDeleteAvailableProduct();
@@ -24,24 +25,20 @@ export default function ProductsTable() {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell align="right">Description</TableCell>
+            <TableCell align="left">Description</TableCell>
             <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Count</TableCell>
+            <TableCell align="right">Priority</TableCell>
             <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((product) => (
             <TableRow key={product.id}>
-              <TableCell component="th" scope="row">
-                {product.title}
-              </TableCell>
-              <TableCell align="right">{product.description}</TableCell>
+              <TableCell align="left">{product.description}</TableCell>
               <TableCell align="right">
                 {formatAsPrice(product.price)}
               </TableCell>
-              <TableCell align="right">{product.count}</TableCell>
+              <TableCell align="right">{priority[product.priority]}</TableCell>
               <TableCell align="right">
                 <Button
                   size="small"

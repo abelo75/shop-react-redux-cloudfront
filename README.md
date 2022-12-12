@@ -1,5 +1,11 @@
 # React-shop-cloudfront
+## Task 2.1, Manual deployment:
+- S3: http://aws-task-manual.s3-website-eu-west-1.amazonaws.com
+- CloudFront: https://d35xg2sx3rfn4u.cloudfront.net, http://d35xg2sx3rfn4u.cloudfront.net
 
+## Task 2.2 Automatic deploy
+- S3: http://aws-task-auto-deploy.s3-website-eu-west-1.amazonaws.com
+- CloudFront: https://d1w4or432cxowo.cloudfront.net, http://d1w4or432cxowo.cloudfront.net
 This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
 
 - [Vite](https://vitejs.dev/) as a project bundler
