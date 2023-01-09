@@ -6,7 +6,7 @@ import PaperLayout from "~/components/PaperLayout/PaperLayout";
 import Typography from "@mui/material/Typography";
 import API_PATHS from "~/constants/apiPaths";
 import { CartItem } from "~/models/CartItem";
-import { AvailableProduct } from "~/models/Product";
+import { AvailableProduct, Product } from "~/models/Product";
 import ReviewOrder from "~/components/pages/PageCart/components/ReviewOrder";
 import { OrderStatus, ORDER_STATUS_FLOW } from "~/constants/order";
 import Button from "@mui/material/Button";
@@ -42,10 +42,11 @@ export default function PageOrder() {
     {
       queryKey: "products",
       queryFn: async () => {
-        const res = await axios.get<AvailableProduct[]>(
-          `${API_PATHS.bff}/product/available`
-        );
-        return res.data;
+        const res = await axios.get<Product[]>(`${API_PATHS.bff}`);
+        return res?.data?.map((item) => ({
+          ...item,
+          count: 10000,
+        })) as AvailableProduct[];
       },
     },
   ]);
@@ -57,7 +58,7 @@ export default function PageOrder() {
   const invalidateOrder = useInvalidateOrder();
   const cartItems: CartItem[] = React.useMemo(() => {
     if (order && products) {
-      return order.items.map((item: OrderItem) => {
+      return order?.items?.map((item: OrderItem) => {
         const product = products.find((p) => p.id === item.productId);
         if (!product) {
           throw new Error("Product not found");
@@ -82,17 +83,17 @@ export default function PageOrder() {
       <ReviewOrder address={order.address} items={cartItems} />
       <Typography variant="h6">Status:</Typography>
       <Typography variant="h6" color="primary">
-        {lastStatusItem?.status.toUpperCase()}
+        {lastStatusItem?.status?.toUpperCase()}
       </Typography>
       <Typography variant="h6">Change status:</Typography>
       <Box py={2}>
         <Formik
-          initialValues={{ status: lastStatusItem.status, comment: "" }}
+          initialValues={{ status: lastStatusItem?.status, comment: "" }}
           enableReinitialize
           onSubmit={(values) =>
             updateOrderStatus(
               { id: order.id, ...values },
-              { onSuccess: () => invalidateOrder(order.id) }
+              { onSuccess: () => invalidateOrder(order?.id) }
             )
           }
         >
